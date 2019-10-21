@@ -5,8 +5,132 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Chess"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Chess" Height="450" Width="550">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="LightTile" TargetType="Button">
+                <Setter Property="Background" Value="#ffcc99" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#ffbf80"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+
+            <Style x:Key="DarkTile" TargetType="Button">
+                <Setter Property="Background" Value="#996633" />
+                <Setter Property="BorderThickness" Value="0" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+                <Style.Triggers>
+                    <Trigger Property="IsMouseOver" Value="True">
+                        <Setter Property="Background" Value="#bf8040"/>
+                    </Trigger>
+                </Style.Triggers>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+
+    <DockPanel>
+        <UniformGrid Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}" DockPanel.Dock="Left">
+            <Button Name="A8" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="B8" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="C8" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="D8" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="E8" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="F8" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="G8" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="H8" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+
+            <Button Name="A7" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="B7" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="C7" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="D7" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="E7" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="F7" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="G7" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="H7" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+
+            <Button Name="A6" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="B6" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="C6" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="D6" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="E6" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="F6" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="G6" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="H6" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+
+            <Button Name="A5" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="B5" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="C5" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="D5" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="E5" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="F5" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="G5" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="H5" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+
+            <Button Name="A4" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="B4" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="C4" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="D4" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="E4" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="F4" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="G4" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="H4" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+
+            <Button Name="A3" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="B3" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="C3" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="D3" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="E3" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="F3" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="G3" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="H3" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+
+            <Button Name="A2" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="B2" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="C2" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="D2" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="E2" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="F2" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="G2" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="H2" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+
+            <Button Name="A1" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="B1" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="C1" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="D1" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="E1" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="F1" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="G1" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="H1" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+        </UniformGrid>
+
+        <StackPanel VerticalAlignment="Center" DockPanel.Dock="Left" Margin="15 0 0 0">
+            <TextBlock Text="00:00:00" FontSize="20" FontWeight="DemiBold" />
+            <TextBlock Text="----------" FontSize="20" FontWeight="DemiBold" />
+            <TextBlock Text="00:00:00" FontSize="20" FontWeight="DemiBold" />
+        </StackPanel>
+    </DockPanel>
 </Window>
