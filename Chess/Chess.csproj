@@ -94,5 +94,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Images\BishopBlack.png" />
+    <Resource Include="Images\KingBlack.png" />
+    <Resource Include="Images\KnightBlack.png" />
+    <Resource Include="Images\PawnBlack.png" />
+    <Resource Include="Images\QueenBlack.png" />
+    <Resource Include="Images\RookBlack.png" />
+    <Resource Include="Images\BishopWhite.png" />
+    <Resource Include="Images\KingWhite.png" />
+    <Resource Include="Images\KnightWhite.png" />
+    <Resource Include="Images\PawnWhite.png" />
+    <Resource Include="Images\QueenWhite.png" />
+    <Resource Include="Images\RookWhite.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
