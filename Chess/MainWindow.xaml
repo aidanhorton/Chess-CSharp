@@ -127,10 +127,15 @@
             <Button Name="H1" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
         </UniformGrid>
 
-        <StackPanel VerticalAlignment="Center" DockPanel.Dock="Left" Margin="15 0 0 0">
-            <TextBlock Text="00:00:00" FontSize="20" FontWeight="DemiBold" />
-            <TextBlock Text="----------" FontSize="20" FontWeight="DemiBold" />
-            <TextBlock Text="00:00:00" FontSize="20" FontWeight="DemiBold" />
-        </StackPanel>
+        <Grid>
+            <StackPanel VerticalAlignment="Center" DockPanel.Dock="Left" Margin="15 0 0 0">
+                <TextBlock Text="00:00:00" FontSize="20" FontWeight="DemiBold" />
+                <TextBlock Text="----------" FontSize="20" FontWeight="DemiBold" />
+                <TextBlock Text="00:00:00" FontSize="20" FontWeight="DemiBold" />
+            </StackPanel>
+
+            <ListBox x:Name="GameLog" DisplayMemberPath="LogString" Height="104" DockPanel.Dock="Left" VerticalAlignment="Bottom" Margin="10" />
+        </Grid>
+        
     </DockPanel>
 </Window>
