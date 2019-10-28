@@ -53,78 +53,206 @@
     
 
     <DockPanel>
-        <UniformGrid Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}" DockPanel.Dock="Left">
-            <Button Name="A8" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="B8" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="C8" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="D8" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="E8" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="F8" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="G8" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="H8" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+        <UniformGrid Name="BoardGrid" Width="{Binding RelativeSource={RelativeSource Self}, Path=ActualHeight}" DockPanel.Dock="Left">
+            <Button Name="A8" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="A8Image" />
+            </Button>
+            <Button Name="B8" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="B8Image" />
+            </Button>
+            <Button Name="C8" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="C8Image" />
+            </Button>
+            <Button Name="D8" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="D8Image" />
+            </Button>
+            <Button Name="E8" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="E8Image" />
+            </Button>
+            <Button Name="F8" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="F8Image" />
+            </Button>
+            <Button Name="G8" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="G8Image" />
+            </Button>
+            <Button Name="H8" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="H8Image" />
+            </Button>
 
-            <Button Name="A7" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="B7" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="C7" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="D7" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="E7" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="F7" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="G7" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="H7" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="A7" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="A7Image" />
+            </Button>
+            <Button Name="B7" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="B7Image" />
+            </Button>
+            <Button Name="C7" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="C7Image" />
+            </Button>
+            <Button Name="D7" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="D7Image" />
+            </Button>
+            <Button Name="E7" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="E7Image" />
+            </Button>
+            <Button Name="F7" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="F7Image" />
+            </Button>
+            <Button Name="G7" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="G7Image" />
+            </Button>
+            <Button Name="H7" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="H7Image" />
+            </Button>
 
-            <Button Name="A6" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="B6" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="C6" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="D6" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="E6" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="F6" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="G6" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="H6" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="A6" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="A6Image" />
+            </Button>
+            <Button Name="B6" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="B6Image" />
+            </Button>
+            <Button Name="C6" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="C6Image" />
+            </Button>
+            <Button Name="D6" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="D6Image" />
+            </Button>
+            <Button Name="E6" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="E6Image" />
+            </Button>
+            <Button Name="F6" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="F6Image" />
+            </Button>
+            <Button Name="G6" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="G6Image" />
+            </Button>
+            <Button Name="H6" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="H6Image" />
+            </Button>
 
-            <Button Name="A5" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="B5" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="C5" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="D5" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="E5" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="F5" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="G5" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="H5" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="A5" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="A5Image" />
+            </Button>
+            <Button Name="B5" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="B5Image" />
+            </Button>
+            <Button Name="C5" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="C5Image" />
+            </Button>
+            <Button Name="D5" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="D5Image" />
+            </Button>
+            <Button Name="E5" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="E5Image" />
+            </Button>
+            <Button Name="F5" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="F5Image" />
+            </Button>
+            <Button Name="G5" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="G5Image" />
+            </Button>
+            <Button Name="H5" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="H5Image" />
+            </Button>
 
-            <Button Name="A4" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="B4" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="C4" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="D4" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="E4" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="F4" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="G4" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="H4" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="A4" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="A4Image" />
+            </Button>
+            <Button Name="B4" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="B4Image" />
+            </Button>
+            <Button Name="C4" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="C4Image" />
+            </Button>
+            <Button Name="D4" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="D4Image" />
+            </Button>
+            <Button Name="E4" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="E4Image" />
+            </Button>
+            <Button Name="F4" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="F4Image" />
+            </Button>
+            <Button Name="G4" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="G4Image" />
+            </Button>
+            <Button Name="H4" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="H4Image" />
+            </Button>
 
-            <Button Name="A3" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="B3" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="C3" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="D3" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="E3" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="F3" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="G3" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="H3" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="A3" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="A3Image" />
+            </Button>
+            <Button Name="B3" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="B3Image" />
+            </Button>
+            <Button Name="C3" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="C3Image" />
+            </Button>
+            <Button Name="D3" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="D3Image" />
+            </Button>
+            <Button Name="E3" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="E3Image" />
+            </Button>
+            <Button Name="F3" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="F3Image" />
+            </Button>
+            <Button Name="G3" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="G3Image" />
+            </Button>
+            <Button Name="H3" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="H3Image" />
+            </Button>
 
-            <Button Name="A2" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="B2" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="C2" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="D2" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="E2" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="F2" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="G2" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="H2" Click="ChessCellClick" Style="{StaticResource LightTile}" />
+            <Button Name="A2" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="A2Image" />
+            </Button>
+            <Button Name="B2" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="B2Image" />
+            </Button>
+            <Button Name="C2" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="C2Image" />
+            </Button>
+            <Button Name="D2" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="D2Image" />
+            </Button>
+            <Button Name="E2" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="E2Image" />
+            </Button>
+            <Button Name="F2" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="F2Image" />
+            </Button>
+            <Button Name="G2" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="G2Image" />
+            </Button>
+            <Button Name="H2" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="H2Image" />
+            </Button>
 
-            <Button Name="A1" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="B1" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="C1" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="D1" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="E1" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="F1" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
-            <Button Name="G1" Click="ChessCellClick" Style="{StaticResource LightTile}" />
-            <Button Name="H1" Click="ChessCellClick" Style="{StaticResource DarkTile}" />
+            <Button Name="A1" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="A1Image" />
+            </Button>
+            <Button Name="B1" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="B1Image" />
+            </Button>
+            <Button Name="C1" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="C1Image" />
+            </Button>
+            <Button Name="D1" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="D1Image" />
+            </Button>
+            <Button Name="E1" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="E1Image" />
+            </Button>
+            <Button Name="F1" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="F1Image" />
+            </Button>
+            <Button Name="G1" Click="ChessCellClick" Style="{StaticResource LightTile}">
+                <Image Name="G1Image" />
+            </Button>
+            <Button Name="H1" Click="ChessCellClick" Style="{StaticResource DarkTile}">
+                <Image Name="H1Image" />
+            </Button>
         </UniformGrid>
 
         <Grid>
