@@ -1,14 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.Linq;
 
 namespace Chess
 {
     public class PieceManager
     {
-        public List<Piece> Pieces = new List<Piece>();
+        public ObservableCollection<Piece> Pieces = new ObservableCollection<Piece>();
+
+        public PieceRow[] PieceBoard = new PieceRow[8];
 
         public PieceManager()
         {
+            this.Pieces.CollectionChanged += PiecesOnCollectionChanged;
+
             this.PopulatePieces();
         }
 
@@ -17,8 +22,54 @@ namespace Chess
             return this.Pieces.FirstOrDefault(piece => piece.Position.Equals(position));
         }
 
+        public Piece GetPieceInBoard(Position position)
+        {
+            return this.PieceBoard[position.Y].GetPiece(position.X);
+        }
+
+        private void SetPieceInBoard(Position position, Piece piece)
+        {
+            this.PieceBoard[position.Y].SetPiece(position.X, piece);
+        }
+
+        private void PiecesOnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+            {
+                foreach (var item in e.NewItems)
+                {
+                    if (!(item is Piece piece))
+                    {
+                        continue;
+                    }
+
+                    this.SetPieceInBoard(piece.Position, piece);
+                }
+            }
+
+            if (e.OldItems == null)
+            {
+                return;
+            }
+
+            foreach (var item in e.OldItems)
+            {
+                if (!(item is Piece piece))
+                {
+                    continue;
+                }
+
+                this.SetPieceInBoard(piece.Position, null);
+            }
+        }
+
         private void PopulatePieces()
         {
+            for (var y = 0; y < 8; y++)
+            {
+                this.PieceBoard[y] = new PieceRow();
+            }
+
             //Black Pieces
             this.Pieces.Add(new Piece(new Position(0, 0), Color.Black, PieceType.Rook));
             this.Pieces.Add(new Piece(new Position(1, 0), Color.Black, PieceType.Knight));
@@ -56,6 +107,21 @@ namespace Chess
             this.Pieces.Add(new Piece(new Position(5, 7), Color.White, PieceType.Bishop));
             this.Pieces.Add(new Piece(new Position(6, 7), Color.White, PieceType.Knight));
             this.Pieces.Add(new Piece(new Position(7, 7), Color.White, PieceType.Rook));
+        }
+    }
+
+    public class PieceRow
+    {
+        public Piece[] Pieces = new Piece[8];
+
+        public Piece GetPiece(int xPos)
+        {
+            return this.Pieces[xPos];
+        }
+
+        public void SetPiece(int xPos, Piece piece)
+        {
+            this.Pieces[xPos] = piece;
         }
     }
 }
