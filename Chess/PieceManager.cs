@@ -29,6 +29,7 @@ namespace Chess
 
         private void SetPieceInBoard(Position position, Piece piece)
         {
+            piece.Position = position;
             this.PieceBoard[position.Y].SetPiece(position.X, piece);
         }
 
