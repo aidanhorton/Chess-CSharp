@@ -6,6 +6,8 @@
 
         public PieceManager PieceManager;
 
+        public Turn CurrentTurn = Turn.Player;
+
         public GameManager(MainWindow window)
         {
             this._mainWindow = window;
@@ -15,11 +17,17 @@
             this.UpdateBoardUi();
         }
 
-        private void UpdateBoardUi()
+        public void UpdateBoardUi()
         {
             this._mainWindow.UpdateBoardUi(this.PieceManager.Pieces);
         }
 
         private MainWindow _mainWindow;
+    }
+
+    public enum Turn
+    {
+        Computer,
+        Player
     }
 }

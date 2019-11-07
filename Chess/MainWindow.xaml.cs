@@ -68,7 +68,23 @@ namespace Chess
         {
             if (sender is Button button)
             {
-                var position = new Position(this.EvaluateLetter(button.Name[0]), 8 - (button.Name[1] - '0'));
+                var position = new Position(this.EvaluateLetter(button.Name[0]), button.Name[1] - '0' - 1);
+                var piece = this.GameManager.PieceManager.GetPiece(position);
+
+                if (piece != null && piece.Color == Color.White)
+                {
+                    this._pieceToMove = piece;
+                    return;
+                }
+
+                if (this._pieceToMove == null)
+                {
+                    return;
+                }
+
+                this.GameManager.PieceManager.SetPieceInBoard(position, this._pieceToMove);
+                this.GameManager.UpdateBoardUi();
+                this._pieceToMove = null;
             }
         }
 
@@ -92,6 +108,6 @@ namespace Chess
             this.GameLog.ScrollIntoView(this.GameLog.SelectedItem);
         }
 
-        private Position startingPosition;
+        private Piece _pieceToMove;
     }
 }
