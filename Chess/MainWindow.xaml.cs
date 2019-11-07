@@ -125,11 +125,6 @@ namespace Chess
             get => this._moveFromButton;
             set
             {
-                if (value == null)
-                {
-                    return;
-                }
-
                 this.RevertButton(this._moveFromButton);
                 this.MoveToButton = null;
 
