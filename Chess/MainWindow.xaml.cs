@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 namespace Chess
@@ -68,12 +69,15 @@ namespace Chess
         {
             if (sender is Button button)
             {
-                var position = new Position(this.EvaluateLetter(button.Name[0]), button.Name[1] - '0' - 1);
+                var position = new Position(EvaluateLetter(button.Name[0]), button.Name[1] - '0' - 1);
                 var piece = this.GameManager.PieceManager.GetPiece(position);
 
                 if (piece != null && piece.Color == Color.White)
                 {
                     this._pieceToMove = piece;
+
+                    this._moveButtons.MoveFromButton = button;
+
                     return;
                 }
 
@@ -85,7 +89,15 @@ namespace Chess
                 this.GameManager.PieceManager.SetPieceInBoard(position, this._pieceToMove);
                 this.GameManager.UpdateBoardUi();
                 this._pieceToMove = null;
+                this._moveButtons.MoveToButton = button;
             }
+        }
+
+        public static int EvaluateLetter(char character)
+        {
+            var chessCharacters = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
+
+            return chessCharacters.IndexOf(character);
         }
 
         private string GetCellName(Position position)
@@ -95,19 +107,82 @@ namespace Chess
             return $"{chessCharacters[position.X]}{position.Y + 1}Image";
         }
 
-        private int EvaluateLetter(char character)
-        {
-            var chessCharacters = new List<char> { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H' };
-
-            return chessCharacters.IndexOf(character);
-        }
-
         private void UpdateLogScroll(object sender, NotifyCollectionChangedEventArgs args)
         {
             this.GameLog.SelectedIndex = this.GameLog.Items.Count - 1;
             this.GameLog.ScrollIntoView(this.GameLog.SelectedItem);
         }
 
+        private readonly ButtonMove _moveButtons = new ButtonMove();
+
         private Piece _pieceToMove;
+    }
+
+    internal class ButtonMove
+    {
+        public Button MoveFromButton
+        {
+            get => this._moveFromButton;
+            set
+            {
+                if (value == null)
+                {
+                    return;
+                }
+
+                this.RevertButton(this._moveFromButton);
+                this.MoveToButton = null;
+
+                this._moveFromButton = value;
+                this.SelectButton(this._moveFromButton);
+            }
+        }
+
+        public Button MoveToButton
+        {
+            get => this._moveToButton;
+            set
+            {
+                this.RevertButton(this._moveToButton);
+
+                this._moveToButton = value;
+                this.SelectButton(this._moveToButton);
+            }
+        }
+
+        private void SelectButton(Button button)
+        {
+            if (button == null)
+            {
+                return;
+            }
+
+            var position = new Position(MainWindow.EvaluateLetter(button.Name[0]), button.Name[1] - '0' - 1);
+            button.Background = (position.X + position.Y) % 2 == 0
+                ? Brushes.YellowGreen
+                : Brushes.ForestGreen;
+        }
+
+        private void RevertButton(Button button)
+        {
+            if (button == null)
+            {
+                return;
+            }
+
+            var position = new Position(MainWindow.EvaluateLetter(button.Name[0]), button.Name[1] - '0' - 1);
+            if ((position.X + position.Y) % 2 == 0)
+            {
+                button.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#ffcc99");
+            }
+            else
+            {
+                button.Background = (SolidColorBrush)new BrushConverter().ConvertFrom("#996633");
+            }
+        }
+
+        private Button _moveFromButton;
+
+        private Button _moveToButton;
     }
 }
