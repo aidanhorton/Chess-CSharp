@@ -11,6 +11,11 @@
             this._mainWindow = window;
         }
 
+        public void Log(LogEntry logEntry)
+        {
+            this._mainWindow.Log.Add(logEntry);
+        }
+
         private MainWindow _mainWindow;
     }
 }
