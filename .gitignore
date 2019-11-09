@@ -5,3 +5,6 @@
 /.vs/
 /Chess/bin/
 /Chess/obj/
+bin/
+obj/
+Chess.sln.DotSettings.user
