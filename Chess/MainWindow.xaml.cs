@@ -28,21 +28,31 @@ namespace Chess
             this.Log.CollectionChanged += UpdateLogScroll;
         }
 
-        public void UpdateBoardUi(IEnumerable<Piece> pieces)
+        public void UpdateBoardUi(PieceRow[] board)
         {
             this.ClearBoard();
 
-            foreach (var piece in pieces)
+            for (var y = 0; y < 8; y++)
             {
-                var cellImageName = this.GetCellName(piece.Position);
-                var image = this.BoardGrid.FindName(cellImageName) as Image;
-                if (image == null)
+                for (var x = 0; x < 8; x++)
                 {
-                    Console.WriteLine("Image is invalid");
-                    continue;
-                }
+                    var piece = board[y].GetPiece(x);
 
-                image.Source = new BitmapImage(new Uri($"Images/{piece.PieceType.ToString()}{piece.Color.ToString()}.png", UriKind.Relative));
+                    if (piece == null)
+                    {
+                        continue;
+                    }
+
+                    var cellImageName = this.GetCellName(piece.Position);
+                    var image = this.BoardGrid.FindName(cellImageName) as Image;
+                    if (image == null)
+                    {
+                        Console.WriteLine("Image is invalid");
+                        continue;
+                    }
+
+                    image.Source = new BitmapImage(new Uri($"Images/{piece.PieceType.ToString()}{piece.Color.ToString()}.png", UriKind.Relative));
+                }
             }
         }
 
@@ -70,7 +80,7 @@ namespace Chess
             if (sender is Button button)
             {
                 var position = new Position(EvaluateLetter(button.Name[0]), button.Name[1] - '0' - 1);
-                var piece = this.GameManager.PieceManager.GetPiece(position);
+                var piece = this.GameManager.PieceManager.GetPieceInBoard(position);
 
                 if (piece != null && piece.Color == Color.White)
                 {

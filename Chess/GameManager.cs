@@ -19,7 +19,7 @@
 
         public void UpdateBoardUi()
         {
-            this._mainWindow.UpdateBoardUi(this.PieceManager.Pieces);
+            this._mainWindow.UpdateBoardUi(this.PieceManager.PieceBoard);
         }
 
         public void Log(LogEntry logEntry)
