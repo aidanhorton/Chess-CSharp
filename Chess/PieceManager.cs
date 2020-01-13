@@ -11,9 +11,21 @@ namespace Chess
             return this.PieceBoard[position.Y].GetPiece(position.X);
         }
 
-        public void SetPieceInBoard(Position position, Piece piece)
+        public void MovePiece(Position position, Piece piece)
         {
-            piece.Position = position;
+            var originalPosition = piece.Position;
+
+            this.SetPieceInBoard(position, piece);
+            this.SetPieceInBoard(originalPosition, null);
+        }
+
+        private void SetPieceInBoard(Position position, Piece piece)
+        {
+            if (piece != null)
+            {
+                piece.Position = position;
+            }
+            
             this.PieceBoard[position.Y].SetPiece(position.X, piece);
         }
 

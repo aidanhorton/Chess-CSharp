@@ -96,7 +96,7 @@ namespace Chess
                     return;
                 }
 
-                this.GameManager.PieceManager.SetPieceInBoard(position, this._pieceToMove);
+                this.GameManager.PieceManager.MovePiece(position, this._pieceToMove);
                 this.GameManager.UpdateBoardUi();
                 this._pieceToMove = null;
                 this._moveButtons.MoveToButton = button;
