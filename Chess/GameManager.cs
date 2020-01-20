@@ -19,7 +19,7 @@
 
         public void UpdateBoardUi()
         {
-            this._mainWindow.UpdateBoardUi(this.PieceManager.PieceBoard);
+            this._mainWindow.UpdateBoardUi(PieceManager.PieceBoard);
         }
 
         public void Log(LogEntry logEntry)
@@ -27,7 +27,7 @@
             this._mainWindow.Log.Add(logEntry);
         }
 
-        private MainWindow _mainWindow;
+        private readonly MainWindow _mainWindow;
     }
 
     public enum Turn

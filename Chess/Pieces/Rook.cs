@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Chess.Pieces
+﻿namespace Chess.Pieces
 {
     public class Rook : Piece
     {
@@ -19,6 +16,7 @@ namespace Chess.Pieces
 
             if (position.X != this.Position.X)
             {
+                // TODO - Get rid of code duplication in the piece checking
                 foreach (var newXPosition in this.GetEnumerationBetweenValues(this.Position.X, position.X))
                 {
                     var pieceAtLocation = PieceManager.GetPieceInBoard(new Position(newXPosition, this.Position.Y));
@@ -43,14 +41,6 @@ namespace Chess.Pieces
                 return true;
             }
 
-            /*
-             * Something weird maybe the X and Y is flipped, or upside-down
-             * But its detecting pawns and other pieces where it shouldn't be detecting pieces
-             *
-             *
-             *
-             */
-
             foreach (var newYPosition in this.GetEnumerationBetweenValues(this.Position.Y, position.Y))
             {
                 var pieceAtLocation = PieceManager.GetPieceInBoard(new Position(this.Position.X, newYPosition));
@@ -73,17 +63,6 @@ namespace Chess.Pieces
             }
 
             return true;
-        }
-
-        private IEnumerable<int> GetEnumerationBetweenValues(int initialValue, int newValue)
-        {
-            var multiplier = newValue < initialValue ? -1 : 1;
-            var difference = Math.Abs(newValue - this.Position.X);
-
-            for (var i = 1; i <= difference; i++)
-            {
-                yield return initialValue + i * multiplier;
-            }
         }
     }
 }

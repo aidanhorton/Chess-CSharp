@@ -80,7 +80,7 @@ namespace Chess
             if (sender is Button button)
             {
                 var position = new Position(EvaluateLetter(button.Name[0]), button.Name[1] - '0' - 1);
-                var piece = this.GameManager.PieceManager.GetPieceInBoard(position);
+                var piece = PieceManager.GetPieceInBoard(position);
 
                 if (piece != null && piece.Color == Color.White)
                 {
@@ -92,6 +92,11 @@ namespace Chess
                 }
 
                 if (this._pieceToMove == null)
+                {
+                    return;
+                }
+
+                if (!this._pieceToMove.IsValidMove(position))
                 {
                     return;
                 }
