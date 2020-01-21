@@ -18,7 +18,7 @@ namespace Chess
             this.PieceType = pieceType;
         }
 
-        public abstract bool IsValidMove(Position position);
+        public abstract bool IsValidMove(Position destination);
 
         protected IEnumerable<int> GetEnumerationBetweenValues(int initialValue, int newValue)
         {

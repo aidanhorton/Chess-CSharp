@@ -7,7 +7,7 @@
         {
         }
 
-        public override bool IsValidMove(Position position)
+        public override bool IsValidMove(Position destination)
         {
             return true;
         }

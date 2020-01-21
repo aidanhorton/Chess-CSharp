@@ -7,17 +7,17 @@
         {
         }
 
-        public override bool IsValidMove(Position position)
+        public override bool IsValidMove(Position destination)
         {
-            if (position.X != this.Position.X && position.Y != this.Position.Y)
+            if (destination.X != this.Position.X && destination.Y != this.Position.Y)
             {
                 return false;
             }
 
-            if (position.X != this.Position.X)
+            if (destination.X != this.Position.X)
             {
                 // TODO - Get rid of code duplication in the piece checking
-                foreach (var newXPosition in this.GetEnumerationBetweenValues(this.Position.X, position.X))
+                foreach (var newXPosition in this.GetEnumerationBetweenValues(this.Position.X, destination.X))
                 {
                     var pieceAtLocation = PieceManager.GetPieceInBoard(new Position(newXPosition, this.Position.Y));
 
@@ -32,7 +32,7 @@
                     }
 
                     // Can't jump over a piece.
-                    if (newXPosition != position.X)
+                    if (newXPosition != destination.X)
                     {
                         return false;
                     }
@@ -41,7 +41,7 @@
                 return true;
             }
 
-            foreach (var newYPosition in this.GetEnumerationBetweenValues(this.Position.Y, position.Y))
+            foreach (var newYPosition in this.GetEnumerationBetweenValues(this.Position.Y, destination.Y))
             {
                 var pieceAtLocation = PieceManager.GetPieceInBoard(new Position(this.Position.X, newYPosition));
 
@@ -56,7 +56,7 @@
                 }
 
                 // Can't jump over a piece.
-                if (newYPosition != position.Y)
+                if (newYPosition != destination.Y)
                 {
                     return false;
                 }
