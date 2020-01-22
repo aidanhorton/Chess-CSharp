@@ -95,15 +95,5 @@ namespace Chess.Pieces
 
             return true;
         }
-
-        private bool CheckYAxis(Position destination)
-        {
-            if (destination.Y != this.Position.Y)
-            {
-
-            }
-
-            return true;
-        }
     }
 }

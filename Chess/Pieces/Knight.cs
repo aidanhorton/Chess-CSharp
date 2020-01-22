@@ -23,14 +23,14 @@ namespace Chess.Pieces
                     return false;
                 }
 
-                var piece = PieceManager.GetPieceInBoard(destination);
+                var pieceAtLocation = PieceManager.GetPieceInBoard(destination);
 
-                if (piece == null)
+                if (pieceAtLocation == null)
                 {
                     return true;
                 }
 
-                return piece.Color != this.Color;
+                return pieceAtLocation.Color != this.Color;
             }
 
             if (Math.Abs(destination.Y - this.Position.Y) == 1)
