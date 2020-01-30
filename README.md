@@ -10,3 +10,4 @@ Todo list:
 - Don't fallback to castle move if no threat or no good path
 - Check/Checkmate logging
 - Stalemate logging
+- Game can be played any orientation, any colour
