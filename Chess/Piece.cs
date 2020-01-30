@@ -5,15 +5,27 @@ namespace Chess
 {
     public abstract class Piece
     {
-        public Position Position;
+        public Position Position
+        {
+            get => this._position;
+            set
+            {
+                this._position = value;
+                IsFirstMove = false;
+            }
+        }
 
         public Color Color;
 
         public PieceType PieceType;
 
+        protected bool IsFirstMove = true;
+
+        private Position _position;
+
         protected Piece(Position position, Color color, PieceType pieceType)
         {
-            this.Position = position;
+            this._position = position;
             this.Color = color;
             this.PieceType = pieceType;
         }
