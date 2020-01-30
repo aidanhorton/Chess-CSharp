@@ -11,3 +11,5 @@ Todo list:
 - Check/Checkmate logging
 - Stalemate logging
 - Game can be played any orientation, any colour
+- Multi-threading
+- GetAllMoves for a piece returns an enumeration to allow alpha-beta pruning to happen faster
