@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Chess.Pieces
 {
@@ -7,6 +8,11 @@ namespace Chess.Pieces
         public Pawn(Position position, Color color)
             : base(position, color, PieceType.Pawn)
         {
+        }
+
+        public override IEnumerable<Position> GetValidMoves()
+        {
+            
         }
 
         public override bool IsValidMove(Position destination)
@@ -21,7 +27,7 @@ namespace Chess.Pieces
             var xDistance = Math.Abs(this.Position.X - destination.X);
             if (yDistance == 2)
             {
-                return this.IsFirstMove && xDistance == 0;
+                return this.Position.Equals(this.OriginalPosition) && xDistance == 0;
             }
 
             if (xDistance > 1)

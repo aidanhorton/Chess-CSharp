@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -96,7 +97,8 @@ namespace Chess
                     return;
                 }
 
-                if (!this._pieceToMove.IsValidMove(position))
+                var validMoves = this._pieceToMove.GetValidMoves();
+                if (!validMoves.Any(x => x.Equals(position)))
                 {
                     return;
                 }

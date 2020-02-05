@@ -40,7 +40,7 @@ namespace Chess
                 new Rook(new Position(7, 0), Color.White)),
 
             new PieceRow(
-                new Pawn(new Position(0, 1), Color.White),
+                null,
                 new Pawn(new Position(1, 1), Color.White),
                 new Pawn(new Position(2, 1), Color.White),
                 new Pawn(new Position(3, 1), Color.White),

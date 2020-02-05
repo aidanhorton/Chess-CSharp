@@ -1,10 +1,100 @@
-﻿namespace Chess.Pieces
+﻿using System.Collections.Generic;
+
+namespace Chess.Pieces
 {
     public class Rook : Piece
     {
         public Rook(Position position, Color color)
             : base(position, color, PieceType.Rook)
         {
+        }
+
+        // TODO - Needs to be re-done and optimized
+        public override IEnumerable<Position> GetValidMoves()
+        {
+            // Valid moves up.
+            for (var y = 1; y < 8 - this.Position.Y; y++)
+            {
+                var newPosition = new Position(this.Position.X, this.Position.Y + y);
+                var pieceAtLocation = PieceManager.GetPieceInBoard(newPosition);
+
+                if (pieceAtLocation == null)
+                {
+                    yield return newPosition;
+                    continue;
+                }
+
+                if (pieceAtLocation.Color == this.Color)
+                {
+                    break;
+                }
+
+                yield return newPosition;
+                break;
+            }
+            
+            // Valid moves down.
+            for (var y = 1; y <= this.Position.Y; y++)
+            {
+                var newPosition = new Position(this.Position.X, this.Position.Y - y);
+                var pieceAtLocation = PieceManager.GetPieceInBoard(newPosition);
+
+                if (pieceAtLocation == null)
+                {
+                    yield return newPosition;
+                    continue;
+                }
+
+                if (pieceAtLocation.Color == this.Color)
+                {
+                    break;
+                }
+
+                yield return newPosition;
+                break;
+            }
+
+            // Valid moves right.
+            for (var x = 1; x < 8 - this.Position.X; x++)
+            {
+                var newPosition = new Position(this.Position.X + x, this.Position.Y);
+                var pieceAtLocation = PieceManager.GetPieceInBoard(newPosition);
+
+                if (pieceAtLocation == null)
+                {
+                    yield return newPosition;
+                    continue;
+                }
+
+                if (pieceAtLocation.Color == this.Color)
+                {
+                    break;
+                }
+
+                yield return newPosition;
+                break;
+            }
+
+            // Valid moves left.
+            for (var x = 1; x <= this.Position.X; x++)
+            {
+                var newPosition = new Position(this.Position.X - x, this.Position.Y);
+                var pieceAtLocation = PieceManager.GetPieceInBoard(newPosition);
+
+                if (pieceAtLocation == null)
+                {
+                    yield return newPosition;
+                    continue;
+                }
+
+                if (pieceAtLocation.Color == this.Color)
+                {
+                    break;
+                }
+
+                yield return newPosition;
+                break;
+            }
         }
 
         public override bool IsValidMove(Position destination)

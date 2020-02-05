@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Chess.Pieces
 {
@@ -7,6 +8,11 @@ namespace Chess.Pieces
         public King(Position position, Color color)
             : base(position, color, PieceType.King)
         {
+        }
+
+        public override IEnumerable<Position> GetValidMoves()
+        {
+            throw new NotImplementedException();
         }
 
         public override bool IsValidMove(Position destination)

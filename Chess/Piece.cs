@@ -5,30 +5,23 @@ namespace Chess
 {
     public abstract class Piece
     {
-        public Position Position
-        {
-            get => this._position;
-            set
-            {
-                this._position = value;
-                IsFirstMove = false;
-            }
-        }
+        public Position Position;
 
         public Color Color;
 
         public PieceType PieceType;
 
-        protected bool IsFirstMove = true;
-
-        private Position _position;
+        protected Position OriginalPosition;
 
         protected Piece(Position position, Color color, PieceType pieceType)
         {
-            this._position = position;
+            this.Position = position;
+            this.OriginalPosition = position;
             this.Color = color;
             this.PieceType = pieceType;
         }
+
+        public abstract IEnumerable<Position> GetValidMoves();
 
         public abstract bool IsValidMove(Position destination);
 
