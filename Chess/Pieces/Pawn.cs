@@ -12,7 +12,7 @@ namespace Chess.Pieces
 
         public override IEnumerable<Position> GetValidMoves()
         {
-            
+            return new List<Position>();
         }
 
         public override bool IsValidMove(Position destination)

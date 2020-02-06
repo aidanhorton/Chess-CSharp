@@ -1,4 +1,6 @@
-﻿namespace Chess
+﻿using Chess.Views;
+
+namespace Chess
 {
     public class GameManager
     {

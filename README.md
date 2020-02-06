@@ -28,3 +28,5 @@ Optimisations:
 - o^2(o-2r) when calculating moves for individual sliding pieces, using intel PSHUFB instruction to do byte swaps on 128-bit registers to calculate diagonal attacks
 - Use dotTrace
 - Be able to read board situation files for evaluation
+- Hashing
+- Unit test suite (with states and timers)
