@@ -6,7 +6,7 @@
 
     <MasterDetailPage.Master>
         <views:MasterPage x:Name="MasterPage" />
-  </MasterDetailPage.Master>
+    </MasterDetailPage.Master>
 
 	<MasterDetailPage.Detail>
 		<NavigationPage>
