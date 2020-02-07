@@ -2,9 +2,8 @@
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
-/.vs/
-/Chess/bin/
-/Chess/obj/
-bin/
-obj/
-Chess.sln.DotSettings.user
+/Xamarin/Chess/obj
+/Xamarin/Chess/bin/Debug/netstandard2.0
+/Xamarin/.vs/Chess/v16
+/Xamarin/Chess.UWP/bin/x86/Debug
+/Xamarin/Chess.UWP/obj

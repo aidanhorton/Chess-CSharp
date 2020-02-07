@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chess.Views.MasterPage"
+			 Padding="0,40,0,0"
+			 IconImageSource="hamburger.png"
+			 Title="Menu">
+
+    <StackLayout>
+        <ListView x:Name="MenuItemList" x:FieldModifier="public">
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
