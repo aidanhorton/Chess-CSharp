@@ -12,6 +12,7 @@ Todo list:
 - Stalemate logging
 - Game can be played any orientation, any colour
 - Convert to .NET Core
+- Dark Mode
 
 Optimisations:
 - Multi-threading
