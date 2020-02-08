@@ -7,11 +7,17 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    RequestedTheme="Dark">
+
+    <Page.Resources>
+        <AcrylicBrush x:Key="NavigationViewDefaultPaneBackground" BackgroundSource="HostBackdrop" TintColor="#1F1F1F" TintOpacity="0.6" FallbackColor="#1F1F1F"/>
+    </Page.Resources>
 
     <Grid>
-        <NavigationView PaneDisplayMode="LeftCompact" IsPaneOpen="False">
+        <controls:NavigationView PaneDisplayMode="LeftCompact" IsPaneOpen="False" AlwaysShowHeader="False" IsTitleBarAutoPaddingEnabled="False">
 
-        </NavigationView>
+        </controls:NavigationView>
     </Grid>
 </Page>
