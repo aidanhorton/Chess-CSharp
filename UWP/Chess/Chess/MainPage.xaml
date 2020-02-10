@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
+    xmlns:views="using:Chess.Views"
     mc:Ignorable="d"
     
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
@@ -16,8 +17,18 @@
     </Page.Resources>
 
     <Grid>
-        <controls:NavigationView PaneDisplayMode="LeftCompact" IsPaneOpen="False" AlwaysShowHeader="False" IsTitleBarAutoPaddingEnabled="False">
+        <controls:NavigationView PaneDisplayMode="LeftCompact" IsPaneOpen="False" AlwaysShowHeader="False" IsTitleBarAutoPaddingEnabled="False" Header="Home">
+            <controls:NavigationView.MenuItems>
+                <controls:NavigationViewItem Content="Home">
+                    <controls:NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE10F;"/>
+                    </controls:NavigationViewItem.Icon>
+                </controls:NavigationViewItem>
+            </controls:NavigationView.MenuItems>
 
+            <controls:NavigationView.Content>
+                <views:HomePage />
+            </controls:NavigationView.Content>
         </controls:NavigationView>
     </Grid>
 </Page>
