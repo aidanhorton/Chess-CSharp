@@ -10,7 +10,44 @@
     RequestedTheme="Dark"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid >
+    <Grid>
         <Grid Height="32" VerticalAlignment="Top" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" />
+
+        <!-- Add 'ItemClick' attribute, and set tile as 'ItemTemplate'. Set the ItemsSource to the list of tiles -->
+        <GridView Padding="24,0,0,36">
+            <GridView.Header>
+                <Grid Margin="0,0,0,12">
+                    <TextBlock Text="Header" Style="{StaticResource HeaderTextBlockStyle}" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="36,12,0,0" />
+                </Grid>
+            </GridView.Header>
+
+            <Grid Width="345" Height="140" Padding="12" Background="{ThemeResource SystemControlBackgroundListLowBrush}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <Image Width="36" VerticalAlignment="Top" Source="/Images/Animations.png" Stretch="Uniform" />
+
+                <RelativePanel Grid.Column="1" Grid.ColumnSpan="2" Margin="16,6,0,0">
+                    <TextBlock 
+                        x:Name="TitleText"
+                        Style="{StaticResource SubtitleTextBlockStyle}" 
+                        Text="Title" 
+                        Foreground="{ThemeResource SystemControlForegroundAccentBrush}" 
+                        TextLineBounds="TrimToCapHeight" 
+                        TextWrapping="NoWrap" />
+
+                    <TextBlock
+                        Style="{StaticResource BodyTextBlockStyle}"
+                        Foreground="{ThemeResource SystemControlForegroundBaseMediumBrush}"
+                        Margin="0,4,16,0"
+                        RelativePanel.Below="TitleText"
+                        Text="The description of the element of text that happens to go in this area"
+                        TextTrimming="CharacterEllipsis" />
+                </RelativePanel>
+            </Grid>
+        </GridView>
     </Grid>
 </Page>
