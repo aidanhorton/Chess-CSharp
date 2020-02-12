@@ -27,7 +27,16 @@
             </controls:NavigationView.MenuItems>
 
             <controls:NavigationView.Content>
-                <views:HomePage />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="32" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid Height="32" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Canvas.ZIndex="100" Grid.Row="0" />
+                    <ScrollViewer Grid.Row="1">
+                        <views:HomePage />
+                    </ScrollViewer>
+                </Grid>
             </controls:NavigationView.Content>
         </controls:NavigationView>
     </Grid>

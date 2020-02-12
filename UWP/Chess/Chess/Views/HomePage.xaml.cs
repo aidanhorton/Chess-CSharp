@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -12,6 +13,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Chess.DataTypes;
+using Chess.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -25,6 +28,9 @@ namespace Chess.Views
         public HomePage()
         {
             this.InitializeComponent();
+            this.ViewModel = new HomePageViewModel();
         }
+
+        public HomePageViewModel ViewModel { get; set; }
     }
 }

@@ -13,6 +13,7 @@ Todo list:
 - Game can be played any orientation, any colour
 - Convert to .NET Core
 - Dark Mode
+- Online mode
 
 Optimisations:
 - Multi-threading
