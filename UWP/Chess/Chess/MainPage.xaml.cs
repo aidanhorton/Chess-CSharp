@@ -1,6 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Controls;
 using Chess.ViewModels;
+using Chess.Views;
 using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
 using NavigationViewItem = Microsoft.UI.Xaml.Controls.NavigationViewItem;
 
@@ -13,7 +14,7 @@ namespace Chess
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private readonly Type _defaultPage = typeof(Views.HomePage);
+        private readonly Type _defaultPage = typeof(HomePage);
 
         public MainPage()
         {
@@ -30,6 +31,7 @@ namespace Chess
         {
             if (selectedPage.IsSettingsSelected)
             {
+                this.NavigationService.Navigate(typeof(SettingsPage));
                 return;
             }
             

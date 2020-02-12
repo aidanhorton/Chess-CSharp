@@ -13,6 +13,7 @@
 
     <Grid>
         <GridView
+            RequestedTheme="Light"
             ItemTemplate="{StaticResource BoardSquareTemplate}"
             ItemContainerStyle="{StaticResource BoardSquareItemStyle}"
             ItemsSource="{x:Bind ViewModel.BoardDataItems, Mode=OneWay}"
