@@ -49,7 +49,7 @@
 
     <DataTemplate x:Key="BoardSquareTemplate" x:DataType="data:BoardDataItem">
         <UserControl>
-            <Grid Width="70" Height="70" Padding="12" Background="{x:Bind BackgroundColor}">
+            <Grid Width="70" Height="70" Padding="6" Background="{x:Bind BackgroundColor}">
                 <Image Source="{x:Bind ImagePath}" Stretch="Uniform" />
             </Grid>
         </UserControl>

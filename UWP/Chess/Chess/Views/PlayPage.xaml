@@ -16,7 +16,8 @@
             ItemTemplate="{StaticResource BoardSquareTemplate}"
             ItemContainerStyle="{StaticResource BoardSquareItemStyle}"
             ItemsSource="{x:Bind ViewModel.BoardDataItems, Mode=OneWay}"
-            Width="563">
+            Width="563"
+            Margin="10,20">
             
         </GridView>
     </Grid>
