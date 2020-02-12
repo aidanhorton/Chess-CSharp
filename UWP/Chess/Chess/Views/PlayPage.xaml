@@ -1,0 +1,23 @@
+﻿<Page
+    x:Class="Chess.Views.PlayPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Chess.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+
+    x:Name="PageRoot"
+    RequestedTheme="Dark"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <GridView
+            ItemTemplate="{StaticResource BoardSquareTemplate}"
+            ItemContainerStyle="{StaticResource BoardSquareItemStyle}"
+            ItemsSource="{x:Bind ViewModel.BoardDataItems, Mode=OneWay}"
+            Width="563">
+            
+        </GridView>
+    </Grid>
+</Page>

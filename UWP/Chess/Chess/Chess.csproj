@@ -119,6 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DataTypes\BoardDataItem.cs" />
     <Compile Include="DataTypes\HomeTileDataItem.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -128,9 +129,14 @@
       <DependentUpon>ResourceDictionary.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\HomePageViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\PlayPageViewModel.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\HomePage.xaml.cs">
       <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PlayPage.xaml.cs">
+      <DependentUpon>PlayPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +146,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Animations.png" />
+    <Content Include="Images\BishopBlack.png" />
+    <Content Include="Images\BishopWhite.png" />
+    <Content Include="Images\KingBlack.png" />
+    <Content Include="Images\KingWhite.png" />
+    <Content Include="Images\KnightBlack.png" />
+    <Content Include="Images\KnightWhite.png" />
+    <Content Include="Images\PawnBlack.png" />
+    <Content Include="Images\PawnWhite.png" />
+    <Content Include="Images\QueenBlack.png" />
+    <Content Include="Images\QueenWhite.png" />
+    <Content Include="Images\RookBlack.png" />
+    <Content Include="Images\RookWhite.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -163,6 +181,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\HomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PlayPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

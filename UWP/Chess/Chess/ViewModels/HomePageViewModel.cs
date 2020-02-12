@@ -9,7 +9,7 @@ namespace Chess.ViewModels
 
         public HomePageViewModel()
         {
-            this._tiles = new ObservableCollection<HomeTileDataItem>()
+            this.Tiles = new ObservableCollection<HomeTileDataItem>()
             {
                 new HomeTileDataItem("Yes", "This is a description for this item", "/Images/Animations.png"),
                 new HomeTileDataItem("Another title", "This is a description for this item", "/Images/Animations.png"),

@@ -7,6 +7,8 @@
 
     <media:AcrylicBrush x:Key="CustomAcrylicBrush" BackgroundSource="Backdrop" TintOpacity="0.8" TintColor="#FF000000" FallbackColor="#FF008000" />
 
+    <!-- Home tile styles -->
+
     <DataTemplate x:Key="HomeTileTemplate" x:DataType="data:HomeTileDataItem">
         <UserControl>
             <Grid Width="345" Height="140" Padding="12" Background="{ThemeResource SystemControlBackgroundListLowBrush}">
@@ -41,6 +43,20 @@
 
     <Style x:Key="HomeTileItemStyle" TargetType="GridViewItem" >
         <Setter Property="Margin" Value="0,0,12,12" />
+    </Style>
+
+    <!-- Board square styles -->
+
+    <DataTemplate x:Key="BoardSquareTemplate" x:DataType="data:BoardDataItem">
+        <UserControl>
+            <Grid Width="70" Height="70" Padding="12" Background="{x:Bind BackgroundColor}">
+                <Image Source="{x:Bind ImagePath}" Stretch="Uniform" />
+            </Grid>
+        </UserControl>
+    </DataTemplate>
+
+    <Style x:Key="BoardSquareItemStyle" TargetType="GridViewItem" >
+        <Setter Property="Margin" Value="0" />
     </Style>
 
 </ResourceDictionary>

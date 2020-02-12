@@ -7,6 +7,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:controls="using:Microsoft.UI.Xaml.Controls"
     xmlns:views="using:Chess.Views"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
@@ -17,9 +19,19 @@
     </Page.Resources>
 
     <Grid>
-        <controls:NavigationView PaneDisplayMode="LeftCompact" IsPaneOpen="False" AlwaysShowHeader="False" IsTitleBarAutoPaddingEnabled="False" Header="Home">
+        <controls:NavigationView 
+            PaneDisplayMode="LeftCompact" 
+            IsPaneOpen="False" 
+            AlwaysShowHeader="False" 
+            IsTitleBarAutoPaddingEnabled="False" 
+            Header="Home"
+            SelectionChanged="NavigationView_SelectionChanged">
             <controls:NavigationView.MenuItems>
-                <controls:NavigationViewItem Content="Home">
+                <controls:NavigationViewItem Icon="Play" Content="Play" Tag="PlayPage" />
+
+                <controls:NavigationViewItemSeparator />
+
+                <controls:NavigationViewItem Content="Home" Tag="HomePage">
                     <controls:NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xE10F;"/>
                     </controls:NavigationViewItem.Icon>
@@ -34,7 +46,8 @@
                     </Grid.RowDefinitions>
                     <Grid Height="32" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Canvas.ZIndex="100" Grid.Row="0" />
                     <ScrollViewer Grid.Row="1">
-                        <views:HomePage />
+                        <Frame x:Name="NavigationService" Margin="0,0,0,0" />
+                        
                     </ScrollViewer>
                 </Grid>
             </controls:NavigationView.Content>

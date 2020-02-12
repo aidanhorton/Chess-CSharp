@@ -1,17 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using Chess.ViewModels;
+using NavigationView = Microsoft.UI.Xaml.Controls.NavigationView;
+using NavigationViewItem = Microsoft.UI.Xaml.Controls.NavigationViewItem;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -22,9 +13,44 @@ namespace Chess
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        private readonly Type _defaultPage = typeof(Views.HomePage);
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            this.ViewModel = new MainPageViewModel();
+
+            this.NavigationService.Navigate(_defaultPage);
+        }
+
+        public MainPageViewModel ViewModel { get; set; }
+
+        private void NavigationView_SelectionChanged(NavigationView sender, Microsoft.UI.Xaml.Controls.NavigationViewSelectionChangedEventArgs selectedPage)
+        {
+            if (selectedPage.IsSettingsSelected)
+            {
+                return;
+            }
+            
+            var selectedItem = (NavigationViewItem)selectedPage.SelectedItem;
+            if (selectedItem == null)
+            {
+                return;
+            }
+
+            var pageTag = (string) selectedItem.Tag;
+            if (string.IsNullOrEmpty(pageTag))
+            {
+                return;
+            }
+
+            var pageType = Type.GetType($"Chess.Views.{pageTag}");
+
+            if (pageType != this.NavigationService.SourcePageType)
+            {
+                this.NavigationService.Navigate(pageType);
+            }
         }
     }
 }
