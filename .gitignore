@@ -12,3 +12,8 @@
 /UWP/Chess/Chess/obj
 /Xamarin/.vs/Chess/DesignTimeBuild
 /UWP/Chess/Chess.Model/obj
+/UWP/Chess/.vs/Chess
+/UWP/Chess/Chess.Model/bin
+/UWP/Chess/Chess.Model.Test/bin/x86/Debug
+/UWP/Chess/Chess.Model.Test/obj
+/UWP/Chess/.vs/config
