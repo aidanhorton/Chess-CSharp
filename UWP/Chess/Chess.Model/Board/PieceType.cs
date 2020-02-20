@@ -2,12 +2,18 @@
 {
     public enum PieceType
     {
-        King,
-        Queens,
-        Rooks,
-        Bishops,
-        Knights,
-        Pawns,
-        Pieces
+        WhiteKing,
+        WhiteQueen,
+        WhiteRook,
+        WhiteBishop,
+        WhiteKnight,
+        WhitePawn,
+        BlackKing,
+        BlackQueen,
+        BlackRook,
+        BlackBishop,
+        BlackKnight,
+        BlackPawn,
+        None
     }
 }

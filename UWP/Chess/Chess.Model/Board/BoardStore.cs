@@ -22,14 +22,68 @@ namespace Chess.Model.Board
 
         internal UInt64 SquaresOccupied;
 
-        private void CreatePieceBitBoards()
+        public void CreatePieceBitBoards(PieceType[] pieces)
         {
+            if (pieces.Length != 64)
+            {
+                throw new Exception("Piece array to populate bit-board from is not 64 squares!");
+            }
+
+            this.ResetBitBoards();
+
             for (Int16 i = 0; i < 64; i++)
             {
                 // Populate board here.
                 // Reference https://stackoverflow.com/questions/9635214/how-can-i-implement-a-bitboard-in-vb-net
 
-                this.WhiteKing |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                if (pieces[i] == PieceType.WhiteKing)
+                {
+                    this.WhiteKing |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.WhiteQueen)
+                {
+                    this.WhiteQueens |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.WhiteRook)
+                {
+                    this.WhiteRooks |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.WhiteBishop)
+                {
+                    this.WhiteBishops |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.WhiteKnight)
+                {
+                    this.WhiteKnights |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.WhitePawn)
+                {
+                    this.WhitePawns |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.BlackKing)
+                {
+                    this.BlackKing |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.BlackQueen)
+                {
+                    this.BlackQueens |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.BlackRook)
+                {
+                    this.BlackRooks |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.BlackBishop)
+                {
+                    this.BlackBishops |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.BlackKnight)
+                {
+                    this.BlackKnights |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
+                else if (pieces[i] == PieceType.BlackPawn)
+                {
+                    this.BlackPawns |= BitwiseHelpers.BitRepresentationOfBoardSquareNumber(i);
+                }
             }
 
             this.WhitePieces = this.WhiteKing | this.WhiteQueens |
@@ -41,6 +95,25 @@ namespace Chess.Model.Board
                                this.BlackKnights | this.BlackPawns;
 
             this.SquaresOccupied = this.WhitePieces | this.BlackPieces;
+        }
+
+        private void ResetBitBoards()
+        {
+            this.WhiteKing = 0;
+            this.WhiteQueens = 0;
+            this.WhiteRooks = 0;
+            this.WhiteBishops = 0;
+            this.WhiteKnights = 0;
+            this.WhitePawns = 0;
+            this.WhitePieces = 0;
+
+            this.BlackKing = 0;
+            this.BlackQueens = 0;
+            this.BlackRooks = 0;
+            this.BlackBishops = 0;
+            this.BlackKnights = 0;
+            this.BlackPawns = 0;
+            this.BlackPieces = 0;
         }
     }
 }
