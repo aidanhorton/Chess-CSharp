@@ -2,15 +2,18 @@
 
 namespace Chess.Model.Board
 {
-    public class BoardStore
+    public delegate void BoardUpdateEventHandler(PieceType[] pieces);
+
+    public class BoardStore : IBoardUpdate
     {
+        public event BoardUpdateEventHandler BoardUpdated;
+
         internal UInt64 WhiteKing;
         internal UInt64 WhiteQueens;
         internal UInt64 WhiteRooks;
         internal UInt64 WhiteBishops;
         internal UInt64 WhiteKnights;
         internal UInt64 WhitePawns;
-        internal UInt64 WhitePieces;
 
         internal UInt64 BlackKing;
         internal UInt64 BlackQueens;
@@ -18,11 +21,13 @@ namespace Chess.Model.Board
         internal UInt64 BlackBishops;
         internal UInt64 BlackKnights;
         internal UInt64 BlackPawns;
+
+        internal UInt64 WhitePieces;
         internal UInt64 BlackPieces;
 
         internal UInt64 SquaresOccupied;
 
-        public void CreatePieceBitBoards(PieceType[] pieces)
+        public void UpdateBoard(PieceType[] pieces)
         {
             if (pieces.Length != 64)
             {
@@ -95,6 +100,8 @@ namespace Chess.Model.Board
                                this.BlackKnights | this.BlackPawns;
 
             this.SquaresOccupied = this.WhitePieces | this.BlackPieces;
+
+            this.BoardUpdated(pieces);
         }
 
         private void ResetBitBoards()

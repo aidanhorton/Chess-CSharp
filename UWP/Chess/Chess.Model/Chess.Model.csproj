@@ -122,7 +122,10 @@
   <ItemGroup>
     <Compile Include="Board\BitwiseHelpers.cs" />
     <Compile Include="Board\BoardStore.cs" />
+    <Compile Include="Board\IBoardUpdate.cs" />
     <Compile Include="Board\PieceType.cs" />
+    <Compile Include="Interpretation\ForsythEdwardsInterpreter.cs" />
+    <Compile Include="Interpretation\IInterpreter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Chess.Model.rd.xml" />
   </ItemGroup>

@@ -33,3 +33,6 @@ Optimisations:
 - Be able to read board situation files for evaluation
 - Hashing
 - Unit test suite (with states and timers)
+- Judge the level someone is playing at, and stop Minimax when a 'good enough' move is found
+- Contiguous memory (ECS) (May not need consideration)
+- Object pooling (LOH) (May not need consideration)

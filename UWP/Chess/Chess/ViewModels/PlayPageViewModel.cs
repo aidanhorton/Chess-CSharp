@@ -1,14 +1,22 @@
 ﻿using System.Collections.ObjectModel;
 using Chess.DataTypes;
+using Chess.Model.Board;
+using Chess.Unity;
+using Unity;
 
 namespace Chess.ViewModels
 {
     public class PlayPageViewModel : ViewModelBase
     {
+        private readonly IBoardUpdate _boardUpdater;
+
         private ObservableCollection<BoardDataItem> _boardDataItems;
 
         public PlayPageViewModel()
         {
+            this._boardUpdater = ServiceLocator.Container.Resolve<IBoardUpdate>();
+            this._boardUpdater.BoardUpdated += this.UpdateBoard;
+
             this.PopulateBoardDataItems();
         }
 
@@ -18,82 +26,103 @@ namespace Chess.ViewModels
             set => this.SetProperty(ref this._boardDataItems, value);
         }
 
+        private void UpdateBoard(PieceType[] pieces)
+        {
+            this._boardDataItems = new ObservableCollection<BoardDataItem>();
+
+            for (var i = 0; i < pieces.Length; i++)
+            {
+                this.BoardDataItems.Add(new BoardDataItem(
+                    this.EvaluateSquareStyle(i), 
+                    $"/Images/{pieces[i].ToString()}.png"));
+            }
+        }
+
+        private BoardSquare EvaluateSquareStyle(int squareIndex)
+        {
+            return (squareIndex % 8 + squareIndex / 8 % 2) % 2 == 0 
+                ? BoardSquare.Dark 
+                : BoardSquare.Light;
+        }
+
         private void PopulateBoardDataItems()
         {
-            this.BoardDataItems = new ObservableCollection<BoardDataItem>()
+            PieceType[] pieces =
             {
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light, "/Images/QueenBlack.png"),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
+                PieceType.WhiteRook,
+                PieceType.WhiteKnight,
+                PieceType.WhiteBishop,
+                PieceType.WhiteQueen,
+                PieceType.WhiteKing,
+                PieceType.WhiteBishop,
+                PieceType.WhiteKnight,
+                PieceType.WhiteRook,
 
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
+                PieceType.WhitePawn,
+                PieceType.WhitePawn,
+                PieceType.WhitePawn,
+                PieceType.WhitePawn,
+                PieceType.WhitePawn,
+                PieceType.WhitePawn,
+                PieceType.WhitePawn,
+                PieceType.WhitePawn,
 
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
 
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
 
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
 
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
+                PieceType.None,
 
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
+                PieceType.BlackPawn,
+                PieceType.BlackPawn,
+                PieceType.BlackPawn,
+                PieceType.BlackPawn,
+                PieceType.BlackPawn,
+                PieceType.BlackPawn,
+                PieceType.BlackPawn,
+                PieceType.BlackPawn,
 
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark),
-                new BoardDataItem(BoardSquare.Light),
-                new BoardDataItem(BoardSquare.Dark)
+                PieceType.BlackRook,
+                PieceType.BlackKnight,
+                PieceType.BlackBishop,
+                PieceType.BlackQueen,
+                PieceType.BlackKing,
+                PieceType.BlackBishop,
+                PieceType.BlackKnight,
+                PieceType.BlackRook
             };
+
+            this._boardUpdater.UpdateBoard(pieces);
         }
     }
 }

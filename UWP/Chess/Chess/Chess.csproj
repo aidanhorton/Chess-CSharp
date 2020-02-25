@@ -128,6 +128,7 @@
     <Compile Include="Resources\ResourceDictionary.xaml.cs">
       <DependentUpon>ResourceDictionary.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Unity\ServiceLocator.cs" />
     <Compile Include="ViewModels\HomePageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\PlayPageViewModel.cs" />
@@ -149,18 +150,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Images\Animations.png" />
-    <Content Include="Images\BishopBlack.png" />
-    <Content Include="Images\BishopWhite.png" />
-    <Content Include="Images\KingBlack.png" />
-    <Content Include="Images\KingWhite.png" />
-    <Content Include="Images\KnightBlack.png" />
-    <Content Include="Images\KnightWhite.png" />
-    <Content Include="Images\PawnBlack.png" />
-    <Content Include="Images\PawnWhite.png" />
-    <Content Include="Images\QueenBlack.png" />
-    <Content Include="Images\QueenWhite.png" />
-    <Content Include="Images\RookBlack.png" />
-    <Content Include="Images\RookWhite.png" />
+    <Content Include="Images\BlackBishop.png" />
+    <Content Include="Images\BlackKing.png" />
+    <Content Include="Images\BlackKnight.png" />
+    <Content Include="Images\BlackPawn.png" />
+    <Content Include="Images\BlackQueen.png" />
+    <Content Include="Images\BlackRook.png" />
+    <Content Include="Images\WhiteBishop.png" />
+    <Content Include="Images\WhiteKing.png" />
+    <Content Include="Images\WhiteKnight.png" />
+    <Content Include="Images\WhitePawn.png" />
+    <Content Include="Images\WhiteQueen.png" />
+    <Content Include="Images\WhiteRook.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -203,6 +204,15 @@
     <PackageReference Include="Microsoft.UI.Xaml">
       <Version>2.3.191211002</Version>
     </PackageReference>
+    <PackageReference Include="Unity.Container">
+      <Version>5.11.5</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Chess.Model\Chess.Model.csproj">
+      <Project>{D9E726E6-B19D-4528-9CBF-630471405E8F}</Project>
+      <Name>Chess.Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
