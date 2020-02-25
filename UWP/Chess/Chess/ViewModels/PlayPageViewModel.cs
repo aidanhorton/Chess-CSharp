@@ -33,12 +33,12 @@ namespace Chess.ViewModels
             for (var i = 0; i < pieces.Length; i++)
             {
                 this.BoardDataItems.Add(new BoardDataItem(
-                    this.EvaluateSquareStyle(i), 
+                    EvaluateSquareStyle(i), 
                     $"/Images/{pieces[i].ToString()}.png"));
             }
         }
 
-        private BoardSquare EvaluateSquareStyle(int squareIndex)
+        private static BoardSquare EvaluateSquareStyle(int squareIndex)
         {
             return (squareIndex % 8 + squareIndex / 8 % 2) % 2 == 0 
                 ? BoardSquare.Dark 
