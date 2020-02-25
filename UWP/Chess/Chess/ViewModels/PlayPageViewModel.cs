@@ -1,6 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using Chess.DataTypes;
 using Chess.Model.Board;
+using Chess.Model.Interpretation;
 using Chess.Unity;
 using Unity;
 
@@ -47,80 +48,9 @@ namespace Chess.ViewModels
 
         private void PopulateBoardDataItems()
         {
-            PieceType[] pieces =
-            {
-                PieceType.WhiteRook,
-                PieceType.WhiteKnight,
-                PieceType.WhiteBishop,
-                PieceType.WhiteQueen,
-                PieceType.WhiteKing,
-                PieceType.WhiteBishop,
-                PieceType.WhiteKnight,
-                PieceType.WhiteRook,
+            var interpreter = new ForsythEdwardsInterpreter();
 
-                PieceType.WhitePawn,
-                PieceType.WhitePawn,
-                PieceType.WhitePawn,
-                PieceType.WhitePawn,
-                PieceType.WhitePawn,
-                PieceType.WhitePawn,
-                PieceType.WhitePawn,
-                PieceType.WhitePawn,
-
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-                PieceType.None,
-
-                PieceType.BlackPawn,
-                PieceType.BlackPawn,
-                PieceType.BlackPawn,
-                PieceType.BlackPawn,
-                PieceType.BlackPawn,
-                PieceType.BlackPawn,
-                PieceType.BlackPawn,
-                PieceType.BlackPawn,
-
-                PieceType.BlackRook,
-                PieceType.BlackKnight,
-                PieceType.BlackBishop,
-                PieceType.BlackQueen,
-                PieceType.BlackKing,
-                PieceType.BlackBishop,
-                PieceType.BlackKnight,
-                PieceType.BlackRook
-            };
+            var pieces = interpreter.Interpret("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
 
             this._boardUpdater.UpdateBoard(pieces);
         }

@@ -19,7 +19,7 @@ namespace Chess.Unity
 
         private static void RegisterTypes()
         {
-            Container.RegisterType<IBoardUpdate, BoardStore>();
+            Container.RegisterInstance<IBoardUpdate>(new BoardStore());
         }
     }
 }
