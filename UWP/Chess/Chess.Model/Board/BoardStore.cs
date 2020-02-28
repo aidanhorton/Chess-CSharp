@@ -1,8 +1,9 @@
 ﻿using System;
+using Chess.Model.Interpretation;
 
 namespace Chess.Model.Board
 {
-    public delegate void BoardUpdateEventHandler(PieceType[] pieces);
+    public delegate void BoardUpdateEventHandler(PieceCollection pieces);
 
     public class BoardStore : IBoardUpdate
     {
@@ -27,7 +28,12 @@ namespace Chess.Model.Board
 
         internal UInt64 SquaresOccupied;
 
-        public void UpdateBoard(PieceType[] pieces)
+        public BoardStore()
+        {
+            this.UpdateBoard(new ForsythEdwardsInterpreter().Interpret("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"));
+        }
+
+        public void UpdateBoard(PieceCollection pieces)
         {
             if (pieces.Length != 64)
             {
@@ -101,7 +107,27 @@ namespace Chess.Model.Board
 
             this.SquaresOccupied = this.WhitePieces | this.BlackPieces;
 
-            this.BoardUpdated(pieces);
+            this.BoardUpdated?.Invoke(pieces);
+        }
+
+        public PieceCollection GetBoard()
+        {
+            var collection = new PieceCollection();
+
+            collection.AddPieceToCollection(PieceType.WhiteKing, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.WhiteKing));
+            collection.AddPieceToCollection(PieceType.WhiteQueen, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.WhiteQueens));
+            collection.AddPieceToCollection(PieceType.WhiteRook, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.WhiteRooks));
+            collection.AddPieceToCollection(PieceType.WhiteBishop, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.WhiteBishops));
+            collection.AddPieceToCollection(PieceType.WhiteKnight, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.WhiteKnights));
+            collection.AddPieceToCollection(PieceType.WhitePawn, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.WhitePawns));
+            collection.AddPieceToCollection(PieceType.BlackKing, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.BlackKing));
+            collection.AddPieceToCollection(PieceType.BlackQueen, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.BlackQueens));
+            collection.AddPieceToCollection(PieceType.BlackRook, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.BlackRooks));
+            collection.AddPieceToCollection(PieceType.BlackBishop, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.BlackBishops));
+            collection.AddPieceToCollection(PieceType.BlackKnight, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.BlackKnights));
+            collection.AddPieceToCollection(PieceType.BlackPawn, BitwiseHelpers.BoardSquareNumbersFromBitRepresentation(this.BlackPawns));
+
+            return collection;
         }
 
         private void ResetBitBoards()

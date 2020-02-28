@@ -1,7 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using Chess.DataTypes;
 using Chess.Model.Board;
-using Chess.Model.Interpretation;
 using Chess.Unity;
 using Unity;
 
@@ -18,7 +17,7 @@ namespace Chess.ViewModels
             this._boardUpdater = ServiceLocator.Container.Resolve<IBoardUpdate>();
             this._boardUpdater.BoardUpdated += this.UpdateBoard;
 
-            this.PopulateBoardDataItems();
+            this.UpdateBoard(this._boardUpdater.GetBoard());
         }
 
         public ObservableCollection<BoardDataItem> BoardDataItems
@@ -26,8 +25,8 @@ namespace Chess.ViewModels
             get => this._boardDataItems;
             set => this.SetProperty(ref this._boardDataItems, value);
         }
-
-        private void UpdateBoard(PieceType[] pieces)
+        
+        private void UpdateBoard(PieceCollection pieces)
         {
             this._boardDataItems = new ObservableCollection<BoardDataItem>();
 
@@ -44,15 +43,6 @@ namespace Chess.ViewModels
             return (squareIndex % 8 + squareIndex / 8 % 2) % 2 == 0 
                 ? BoardSquare.Dark 
                 : BoardSquare.Light;
-        }
-
-        private void PopulateBoardDataItems()
-        {
-            var interpreter = new ForsythEdwardsInterpreter();
-
-            var pieces = interpreter.Interpret("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR");
-
-            this._boardUpdater.UpdateBoard(pieces);
         }
     }
 }

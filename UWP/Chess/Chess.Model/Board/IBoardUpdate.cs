@@ -4,6 +4,8 @@
     {
         event BoardUpdateEventHandler BoardUpdated;
 
-        void UpdateBoard(PieceType[] pieces);
+        void UpdateBoard(PieceCollection pieces);
+
+        PieceCollection GetBoard();
     }
 }

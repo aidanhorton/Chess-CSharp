@@ -2,6 +2,7 @@
 {
     public enum PieceType
     {
+        None,
         WhiteKing,
         WhiteQueen,
         WhiteRook,
@@ -13,7 +14,6 @@
         BlackRook,
         BlackBishop,
         BlackKnight,
-        BlackPawn,
-        None
+        BlackPawn
     }
 }

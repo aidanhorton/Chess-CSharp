@@ -36,3 +36,4 @@ Optimisations:
 - Judge the level someone is playing at, and stop Minimax when a 'good enough' move is found
 - Contiguous memory (ECS) (May not need consideration)
 - Object pooling (LOH) (May not need consideration)
+- Inject Bit Scan Forward (bsf) Bit Instruction to assembly after JIT compiler instead of BitScanForward body

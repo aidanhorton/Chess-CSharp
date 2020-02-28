@@ -4,6 +4,6 @@ namespace Chess.Model.Interpretation
 {
     public interface IInterpreter
     {
-        PieceType[] Interpret(string interpretationText);
+        PieceCollection Interpret(string interpretationText);
     }
 }

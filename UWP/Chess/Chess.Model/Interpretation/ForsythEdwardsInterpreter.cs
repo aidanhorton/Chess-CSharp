@@ -6,18 +6,19 @@ namespace Chess.Model.Interpretation
 {
     public class ForsythEdwardsInterpreter : IInterpreter
     {
-        public PieceType[] Interpret(string interpretationText)
+        public PieceCollection Interpret(string interpretationText)
         {
+            // FEN is always from whites perspective.
             var fenSections = interpretationText.Split(' ');
 
             return InterpretPieceSection(fenSections[0]);
         }
 
-        private static PieceType[] InterpretPieceSection(string boardRepresentation)
+        private static PieceCollection InterpretPieceSection(string boardRepresentation)
         {
             var rows = boardRepresentation.Split('/');
 
-            var pieces = new PieceType[64];
+            var pieces = new PieceCollection();
             for (var rowIndex = 0; rowIndex < rows.Length; rowIndex++)
             {
                 var currentColumn = 0;
