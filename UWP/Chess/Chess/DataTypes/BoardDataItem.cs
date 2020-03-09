@@ -1,17 +1,27 @@
 ﻿using Windows.UI;
 using Windows.UI.Xaml.Media;
+using Chess.Model.Board;
 
 namespace Chess.DataTypes
 {
     public class BoardDataItem
     {
-        public BoardDataItem(BoardSquare boardSquare, string imagePath = null)
+        public BoardDataItem(PieceType pieceType, int boardIndex)
         {
             // Must return a URI that isn't null or ''
-            this.ImagePath = imagePath ?? "x";
+            this.ImagePath = pieceType != PieceType.None
+                ? $"/Images/{pieceType.ToString()}.png"
+                : "x";
 
-            this.SetBackgroundColor(boardSquare);
+            this.PieceType = pieceType;
+            this.BoardIndex = boardIndex;
+
+            this.SetBackgroundColor(EvaluateSquareStyle(boardIndex));
         }
+
+        public PieceType PieceType { get; set; }
+
+        public int BoardIndex { get; }
 
         public string ImagePath { get; set; }
 
@@ -26,7 +36,14 @@ namespace Chess.DataTypes
             }
 
             this.BackgroundColor = new SolidColorBrush(Color.FromArgb(255, 240, 217, 181));
-        } 
+        }
+
+        private static BoardSquare EvaluateSquareStyle(int squareIndex)
+        {
+            return (squareIndex % 8 + squareIndex / 8 % 2) % 2 == 0
+                ? BoardSquare.Dark
+                : BoardSquare.Light;
+        }
     }
 
     public enum BoardSquare
