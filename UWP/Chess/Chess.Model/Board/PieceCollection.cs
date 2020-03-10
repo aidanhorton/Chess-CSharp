@@ -1,10 +1,17 @@
-﻿using System.Collections.Generic;
-
-namespace Chess.Model.Board
+﻿namespace Chess.Model.Board
 {
     public class PieceCollection
     {
         private readonly PieceType[] _pieces = new PieceType[64];
+
+        public PieceCollection()
+        {
+        }
+
+        public PieceCollection(PieceCollection instanceToCopy)
+        {
+            this._pieces = instanceToCopy._pieces;
+        }
 
         public int Length => this._pieces.Length;
 

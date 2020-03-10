@@ -11,7 +11,7 @@ namespace Chess.ViewModels
     public abstract class ViewModelBase : INotifyPropertyChanged
     {
         /// <summary>
-        /// Multicast event for property change notifications.
+        /// Multi-cast event for property change notifications.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 

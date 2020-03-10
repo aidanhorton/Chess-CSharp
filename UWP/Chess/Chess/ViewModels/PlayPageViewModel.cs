@@ -12,6 +12,8 @@ namespace Chess.ViewModels
 
         private ObservableCollection<BoardDataItem> _boardDataItems;
 
+        private PieceCollection _currentBoard;
+
         public PlayPageViewModel()
         {
             this._boardUpdater = ServiceLocator.Container.Resolve<IBoardUpdate>();
@@ -30,18 +32,44 @@ namespace Chess.ViewModels
 
         public bool TryMove(int pieceToMoveIndex, int locationToMoveToIndex)
         {
+            var boardCopy = new PieceCollection(this._currentBoard);
 
+            boardCopy[locationToMoveToIndex] = boardCopy[pieceToMoveIndex];
+            boardCopy[pieceToMoveIndex] = PieceType.None;
 
-            return false;
+            this._boardUpdater.UpdateBoard(boardCopy);
+
+            return true;
         }
 
         private void UpdateBoard(PieceCollection pieces)
         {
-            this._boardDataItems = new ObservableCollection<BoardDataItem>();
+            // Persist background colors for selected pieces in the edge case that this
+            //  method is called while pieces are selected? May not be necessary.
+            // Persist could avoid flashing though if instead of creating a new list,
+            //  we simply update the existing list.
+            this._currentBoard = pieces;
+
+            if (this.BoardDataItems == null)
+            {
+                this.BoardDataItems = new ObservableCollection<BoardDataItem>();
+
+                for (var i = 0; i < pieces.Length; i++)
+                {
+                    this.BoardDataItems.Add(new BoardDataItem(pieces[i], i));
+                }
+
+                return;
+            }
 
             for (var i = 0; i < pieces.Length; i++)
             {
-                this.BoardDataItems.Add(new BoardDataItem(pieces[i], i));
+                if (this.BoardDataItems[i].PieceType == pieces[i])
+                {
+                    continue;
+                }
+
+                this.BoardDataItems[i].UpdatePieceType(pieces[i]);
             }
         }
     }

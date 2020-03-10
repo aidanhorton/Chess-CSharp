@@ -9,9 +9,9 @@ namespace Chess.Views
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class PlayPage : Page
+    public sealed partial class PlayPage
     {
-        private BoardDataItem currentSelectedPiece;
+        private BoardDataItem _currentSelectedPiece;
 
         public PlayPage()
         {
@@ -36,20 +36,48 @@ namespace Chess.Views
                 return;
             }
 
-            if (selectedItem.PieceType.ToString().Contains("White") && this.ViewModel.IsWhiteMove)
+            if ((selectedItem.PieceType.ToString().Contains("White") && this.ViewModel.IsWhiteMove) || (selectedItem.PieceType.ToString().Contains("Black") && !this.ViewModel.IsWhiteMove))
             {
-                // Assign to current selected piece, or if valid piece already then try to move through new viewmodel 'trymove' method
-                // If not white move then deselect
+                this.SetCurrentSelectedPiece(selectedItem);
+
+                return;
             }
-            else if (selectedItem.PieceType.ToString().Contains("Black") && !this.ViewModel.IsWhiteMove)
+
+            if (this._currentSelectedPiece == null)
             {
-                // Assign to current selected piece, or if valid piece already then try to move through new viewmodel 'trymove' method
-                // If not white move then deselect
+                return;
+            }
+
+            if (this.ViewModel.TryMove(this._currentSelectedPiece.BoardIndex, selectedItem.BoardIndex))
+            {
+                // Keep a record to keep the pieces highlighted for the next move
+                // Reset pieces highlighted from previous move.
+
+                this.ResetCurrentSelectedPiece();
             }
             else
             {
-                // Deselect
+                this.ResetCurrentSelectedPiece();
             }
+        }
+
+        private void ResetCurrentSelectedPiece()
+        {
+            if (this._currentSelectedPiece == null)
+            {
+                return;
+            }
+
+            this.ViewModel.BoardDataItems[this._currentSelectedPiece.BoardIndex].SetBackgroundColor();
+            this._currentSelectedPiece = null;
+        }
+
+        private void SetCurrentSelectedPiece(BoardDataItem newPiece)
+        {
+            this.ResetCurrentSelectedPiece();
+
+            this._currentSelectedPiece = newPiece;
+            this.ViewModel.BoardDataItems[this._currentSelectedPiece.BoardIndex].SetBackgroundColor(TileSelectionMode.TileSelected);
         }
     }
 }
