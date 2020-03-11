@@ -19,7 +19,7 @@ namespace Chess.ViewModels
             this._boardUpdater = ServiceLocator.Container.Resolve<IBoardUpdate>();
             this._boardUpdater.BoardUpdated += this.UpdateBoard;
 
-            this.UpdateBoard(this._boardUpdater.GetBoard());
+            this.InitialiseBoard();
         }
 
         public bool IsWhiteMove { get; set; }
@@ -50,18 +50,6 @@ namespace Chess.ViewModels
             //  we simply update the existing list.
             this._currentBoard = pieces;
 
-            if (this.BoardDataItems == null)
-            {
-                this.BoardDataItems = new ObservableCollection<BoardDataItem>();
-
-                for (var i = 0; i < pieces.Length; i++)
-                {
-                    this.BoardDataItems.Add(new BoardDataItem(pieces[i], i));
-                }
-
-                return;
-            }
-
             for (var i = 0; i < pieces.Length; i++)
             {
                 if (this.BoardDataItems[i].PieceType == pieces[i])
@@ -70,6 +58,24 @@ namespace Chess.ViewModels
                 }
 
                 this.BoardDataItems[i].UpdatePieceType(pieces[i]);
+            }
+        }
+
+        private void InitialiseBoard()
+        {
+            var pieces = this._boardUpdater.GetBoard();
+            this._currentBoard = pieces;
+
+            if (this.BoardDataItems != null)
+            {
+                return;
+            }
+                
+            this.BoardDataItems = new ObservableCollection<BoardDataItem>();
+
+            for (var i = 0; i < pieces.Length; i++)
+            {
+                this.BoardDataItems.Add(new BoardDataItem(pieces[i], i));
             }
         }
     }

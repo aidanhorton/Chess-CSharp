@@ -53,6 +53,8 @@ namespace Chess.Views
                 // Keep a record to keep the pieces highlighted for the next move
                 // Reset pieces highlighted from previous move.
 
+                // Deselect in the grid to allow 'reselection' of last moved piece
+
                 this.ResetCurrentSelectedPiece();
             }
             else

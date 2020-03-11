@@ -15,44 +15,35 @@ namespace Chess.DataTypes
 
         public BoardDataItem(PieceType pieceType, int boardIndex)
         {
-            this.EvaluateImagePath(pieceType);
-
             this.PieceType = pieceType;
             this.BoardIndex = boardIndex;
+
+            this.EvaluateImagePath();
             this.EvaluateTileStyle(boardIndex);
 
             this.SetBackgroundColor();
         }
 
-        public BoardDataItem(BoardDataItem instanceToClone)
-        {
-            this._boardTileHighlight = instanceToClone._boardTileHighlight;
-
-            this.PieceType = instanceToClone.PieceType;
-            this.BoardIndex = instanceToClone.BoardIndex;
-            this.ImagePath = instanceToClone.ImagePath;
-            this.BackgroundColor = instanceToClone.BackgroundColor;
-        }
-
-        public PieceType PieceType { get; }
-
-        public int BoardIndex { get; }
-
         public string ImagePath
         {
-            get => this._imagePath; 
+            get => this._imagePath;
             private set => this.SetProperty(ref this._imagePath, value, nameof(this.ImagePath));
         }
 
         public SolidColorBrush BackgroundColor
         {
-            get => this._backgroundColor; 
+            get => this._backgroundColor;
             private set => this.SetProperty(ref this._backgroundColor, value, nameof(this.BackgroundColor));
         }
 
+        public PieceType PieceType { get; private set; }
+
+        public int BoardIndex { get; }
+
         public void UpdatePieceType(PieceType newPieceType)
         {
-            this.EvaluateImagePath(newPieceType);
+            this.PieceType = newPieceType;
+            this.EvaluateImagePath();
         }
 
         public void SetBackgroundColor(TileSelectionMode selectionMode = TileSelectionMode.TileUnselected)
@@ -85,11 +76,11 @@ namespace Chess.DataTypes
                 : TileHighlight.Light;
         }
 
-        private void EvaluateImagePath(PieceType pieceType)
+        private void EvaluateImagePath()
         {
             // Must return a URI that isn't null or ''
-            this.ImagePath = pieceType != PieceType.None
-                ? $"/Images/{pieceType.ToString()}.png"
+            this.ImagePath = this.PieceType != PieceType.None
+                ? $"/Images/{this.PieceType.ToString()}.png"
                 : "x";
         }
     }
