@@ -13,6 +13,7 @@
 
     <Grid>
         <GridView
+            Name="BoardGrid"
             RequestedTheme="Light"
             ItemTemplate="{StaticResource BoardSquareTemplate}"
             ItemContainerStyle="{StaticResource BoardSquareItemStyle}"

@@ -11,13 +11,14 @@ namespace Chess.Views
     /// </summary>
     public sealed partial class PlayPage
     {
-        private BoardDataItem _currentSelectedPiece;
+        private readonly HighlightedMove _highlightedMove;
 
         public PlayPage()
         {
             this.InitializeComponent();
 
             this.ViewModel = new PlayPageViewModel();
+            this._highlightedMove = new HighlightedMove(this.ViewModel);
         }
 
         public PlayPageViewModel ViewModel { get; set; }
@@ -38,48 +39,73 @@ namespace Chess.Views
 
             if ((selectedItem.PieceType.ToString().Contains("White") && this.ViewModel.IsWhiteMove) || (selectedItem.PieceType.ToString().Contains("Black") && !this.ViewModel.IsWhiteMove))
             {
-                this.SetCurrentSelectedPiece(selectedItem);
+                this._highlightedMove.TileToMoveFrom = selectedItem;
 
                 return;
             }
 
-            if (this._currentSelectedPiece == null)
+            if (this._highlightedMove.TileToMoveFrom == null)
             {
                 return;
             }
 
-            if (this.ViewModel.TryMove(this._currentSelectedPiece.BoardIndex, selectedItem.BoardIndex))
+            if (this.ViewModel.TryMove(this._highlightedMove.TileToMoveFrom.BoardIndex, selectedItem.BoardIndex))
             {
-                // Keep a record to keep the pieces highlighted for the next move
-                // Reset pieces highlighted from previous move.
-
-                // Deselect in the grid to allow 'reselection' of last moved piece
-
-                this.ResetCurrentSelectedPiece();
+                this.BoardGrid.SelectedItem = null;
+                this._highlightedMove.TileToMoveTo = selectedItem;
             }
             else
             {
-                this.ResetCurrentSelectedPiece();
+                this._highlightedMove.TileToMoveFrom = null;
             }
         }
 
-        private void ResetCurrentSelectedPiece()
+        private class HighlightedMove
         {
-            if (this._currentSelectedPiece == null)
+            private readonly PlayPageViewModel _viewModel;
+
+            private BoardDataItem _tileToMoveFrom;
+
+            private BoardDataItem _tileToMoveTo;
+
+            public HighlightedMove(PlayPageViewModel viewModel)
             {
-                return;
+                this._viewModel = viewModel;
             }
 
-            this.ViewModel.BoardDataItems[this._currentSelectedPiece.BoardIndex].SetBackgroundColor();
-            this._currentSelectedPiece = null;
-        }
+            public BoardDataItem TileToMoveFrom
+            {
+                get => this._tileToMoveFrom;
+                set
+                {
+                    this.SetPieceHighlight(this._tileToMoveFrom);
+                    this.SetPieceHighlight(this._tileToMoveTo);
+                    this.SetPieceHighlight(value, TileSelectionMode.TileSelected);
 
-        private void SetCurrentSelectedPiece(BoardDataItem newPiece)
-        {
-            this.ResetCurrentSelectedPiece();
+                    this._tileToMoveFrom = value;
+                }
+            }
 
-            this._currentSelectedPiece = newPiece;
-            this.ViewModel.BoardDataItems[this._currentSelectedPiece.BoardIndex].SetBackgroundColor(TileSelectionMode.TileSelected);
+            public BoardDataItem TileToMoveTo
+            {
+                set
+                {
+                    this.SetPieceHighlight(this._tileToMoveTo);
+                    this.SetPieceHighlight(value, TileSelectionMode.TileSelected);
+
+                    this._tileToMoveTo = value;
+                }
+            }
+
+            private void SetPieceHighlight(BoardDataItem piece, TileSelectionMode tileSelectionMode = TileSelectionMode.TileUnselected)
+            {
+                if (piece == null)
+                {
+                    return;
+                }
+
+                this._viewModel.BoardDataItems[piece.BoardIndex].SetBackgroundColor(tileSelectionMode);
+            }
         }
     }
 }
