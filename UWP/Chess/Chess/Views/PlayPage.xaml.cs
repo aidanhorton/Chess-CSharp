@@ -1,5 +1,6 @@
 ﻿using Windows.UI.Xaml.Controls;
 using Chess.DataTypes;
+using Chess.Model.Board;
 using Chess.ViewModels;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -44,13 +45,14 @@ namespace Chess.Views
                 return;
             }
 
-            if (this._highlightedMove.TileToMoveFrom == null)
+            if (this._highlightedMove.TileToMoveFrom == null || this._highlightedMove.TileToMoveFrom.PieceType == PieceType.None)
             {
                 return;
             }
 
             if (this.ViewModel.TryMove(this._highlightedMove.TileToMoveFrom.BoardIndex, selectedItem.BoardIndex))
             {
+                // TODO - TileToMoveFrom gets deselected if you re-move the same piece.
                 this.BoardGrid.SelectedItem = null;
                 this._highlightedMove.TileToMoveTo = selectedItem;
             }
